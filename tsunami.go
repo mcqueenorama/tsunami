@@ -21,6 +21,7 @@ var commands = []*Command{
         cmdVersion,
         cmdGet,
         cmdServer,
+        cmdClient,
 }
 
 func main() {

@@ -1,7 +1,9 @@
 Build and run it:
 
 go build
-tsunami
+tsunami server
+tsunami client
+tsunami help
 
 
 This is a golang implementation of tsunami-udp:

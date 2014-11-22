@@ -24,7 +24,7 @@ func TtpNegotiate(conn net.Conn) (rv bool, err error)  {
     if err != nil {
         return rv, err
     }
-    fmt.Printf("server version:%x:\n", serverVersion)
+    fmt.Printf("sending version:%x:\n", serverVersion)
 
     n, err := conn.Write(serverVersion)
     if err != nil {
@@ -44,7 +44,7 @@ func TtpNegotiate(conn net.Conn) (rv bool, err error)  {
     if err != nil {
         return rv, err
     }  
-    fmt.Printf("clientVersion:%x:\n", clientVersion)
+    fmt.Printf("got version:%x:\n", clientVersion)
 
     if clientVersion != TTP_VERSION {
         return false, nil

@@ -9,17 +9,6 @@ import (
     "runtime"
 )
 
-const (
-    NCPU = 8 
-    //I can test this version with echo %%%% | netcat localhost 1200
-    // TTP_VERSION = int32(0x25252525)
-    //this is the correct version
-    //TTP_VERSION = int32(0x20061025)
-    BUF_SIZE = 512
-    SERVICE = ":1200"
-    PASSWORD = "kitten"
-)
-
 var cmdServer = &Command{
     Run:       runServer,
     UsageLine: "server",
@@ -66,7 +55,7 @@ func listenTCPCommands(listener net.Listener) {
             continue
         }
 
-        rv, err := protocol.TtpNegotiate(conn)
+        rv, err := TtpNegotiate(conn)
         if err != nil {
             checkError(err)
             return
@@ -124,12 +113,5 @@ func handleData(conn net.PacketConn, cpu int) {
     }
   }
 
-}
-
-func checkError(err error) {
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())
-        os.Exit(1)
-    }
 }
 
